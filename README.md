@@ -16,7 +16,7 @@
 
 ## Built with
 
-React v.16.13.1 </br>
+React v.17.0.2 </br>
 
 ## Getting started
 
