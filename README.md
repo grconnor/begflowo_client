@@ -14,6 +14,12 @@
 
 - Connor Roelofsen.
 
+## Updates/Improvements:
+
+- Commented out code in LoginForm.jsx
+- 
+- 
+
 ## Built with
 
 React v.17.0.2 </br>
@@ -41,11 +47,6 @@ $ yarn start
 
 - email: admin@gmail.com password: admin
 
-## Updates/Improvements
-
-- 
-- 
-- 
 
 ---------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
