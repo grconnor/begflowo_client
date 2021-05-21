@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -5,6 +6,7 @@ import InputFields from "./components/InputFields";
 import LoginForm from "./components/LoginForm";
 import Dashboard from "./components/Dashboard";
 import Preferences from "./components/Preferences";
+import { authenticate } from "./modules/auth";
 
 class App extends Component {
   state = {
@@ -17,7 +19,7 @@ class App extends Component {
     mileage: "",
     renderLoginForm: false,
     authenticated: false,
-    message: ""
+    message: "",
   };
 
   onChangeHandler = (e) => {
@@ -38,29 +40,41 @@ class App extends Component {
   };
 
   render() {
-    const renderLogin = this.state.renderLoginForm ? (
-      <LoginForm submitFormHandler={this.onLogin} />
-    ) : (
-      <button
-        id="login"
-        onClick={() => this.setState({ renderLoginForm: true })}
-      >
-        Login
-      </button>
-    );
+    const { renderLoginForm, authenticated, message } = this.state;
+    let renderLogin;
+    switch (true) {
+      case renderLoginForm && !authenticated:
+        renderLogin = <LoginForm submitFormHandler={this.onLogin} />;
+        break;
+      case !renderLoginForm && !authenticated:
+        renderLogin = (
+          <>
+            <button
+              id="login"
+              onClick={() => this.setState({ renderLoginForm: true })}
+            >
+              Login
+            </button>
+            <p id="message">{message}</p>
+          </>
+        );
+        break;
+      case authenticated:
+        renderLogin = (
+          <p>Welcome {JSON.parse(sessionStorage.getItem("credentials")).name}.</p>
+        );
+        break;
+    }
+
     return (
       <>
         <div className="wrapper">
-          <h1>Application</h1>
+          <h1>BegFlow</h1>
           {renderLogin}
           <BrowserRouter>
             <Switch>
-              <Route path="/dashboard">
-                <Dashboard />
-              </Route>
-              <Route path="/preferences">
-                <Preferences />
-              </Route>
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/preferences" component={Preferences} />
             </Switch>
           </BrowserRouter>
         </div>

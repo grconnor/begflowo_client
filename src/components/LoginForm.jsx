@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter } from "react-router-dom";
 import {
   Button,
   Form,
   Container,
-  Menu,
   Message,
   MenuItem,
 } from "semantic-ui-react";
@@ -39,9 +38,16 @@ const LoginForm = ({ submitFormHandler }) => {
       </Container>
 
       <Container>
-        <MenuItem as={Link} to="/register" id="register">
+        <div>
+          <BrowserRouter>
+            <Link to="/register" id="register">
+              Don't have an account yet? Sign up now!
+            </Link>
+          </BrowserRouter>
+        </div>
+        {/* <MenuItem as={Link} to="/register" id="register">
           Don't have an account yet? Sign up now!
-        </MenuItem>
+        </MenuItem> */}
 
         {message && (
           <Message id="login-message" color="red">

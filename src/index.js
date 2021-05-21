@@ -8,7 +8,7 @@ let apiUrl;
 if (process.env.NODE_ENV === "production") {
   apiUrl = "https://begflow-api.herokuapp.com/api/v1";
 } else {
-  apiUrl = "http://localhost:4000/api/v1";
+  apiUrl = "http://localhost:3000/api/v1";
 }
 axios.defaults.baseURL = apiUrl;
 
