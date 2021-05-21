@@ -61,7 +61,7 @@ class App extends Component {
         break;
       case authenticated:
         renderLogin = (
-          <p>Welcome {JSON.parse(sessionStorage.getItem("credentials")).name}.</p>
+          <p>You are logged in as {JSON.parse(sessionStorage.getItem("credentials")).uid}.</p>
         );
         break;
     }
