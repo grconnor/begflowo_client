@@ -50,7 +50,7 @@ const LoginForm = ({ submitFormHandler }) => {
         </MenuItem> */}
 
         {message && (
-          <Message id="login-message" color="red">
+          <Message id="onlogin-message" color="red">
             {message}
           </Message>
         )}

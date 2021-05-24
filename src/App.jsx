@@ -6,7 +6,10 @@ import InputFields from "./components/InputFields";
 import LoginForm from "./components/LoginForm";
 import Dashboard from "./components/Dashboard";
 import Preferences from "./components/Preferences";
+import SideBar  from "./components/SideBar";
 import { authenticate } from "./modules/auth";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 class App extends Component {
   state = {
@@ -61,7 +64,9 @@ class App extends Component {
         break;
       case authenticated:
         renderLogin = (
-          <p>You are logged in as {JSON.parse(sessionStorage.getItem("credentials")).uid}.</p>
+          <p id="welcome-message">
+            You are logged in as {JSON.parse(sessionStorage.getItem("credentials")).uid}.
+          </p>
         );
         break;
     }
@@ -69,7 +74,7 @@ class App extends Component {
     return (
       <>
         <div className="wrapper">
-          <h1>BegFlow</h1>
+          {/* <h1 id="main-logo">BegFlow</h1> */}
           {renderLogin}
           <BrowserRouter>
             <Switch>
@@ -78,7 +83,10 @@ class App extends Component {
             </Switch>
           </BrowserRouter>
         </div>
+        <Header />
         <InputFields onChangeHandler={this.onChangeHandler} />
+        <SideBar />
+        <Footer />
       </>
     );
   }
