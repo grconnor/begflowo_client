@@ -1,22 +1,18 @@
+/* App */
+
 .App {
   width: 100vw;
   height: 200vh;
   background-color: pink;
 }
 
-.sidebarnew {
-  max-width: 240px;
-  background-color: #2f4050;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.sidebarnew-subitem-text {
-  font-size: 0.8rem;
-}
+/* Input Fields */
 
 .input-fields {
   padding-left: 250px;
 }
+
+/* Header, Footer, Body, Code */
 
 .header {
   background-color: grey;
@@ -33,14 +29,10 @@ body {
   padding-top: 50px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .footer {
@@ -54,11 +46,21 @@ code {
   right: 0;
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* Sidebar */
 
 .sidebar {
-  max-width: 250px;
-  height: 100vh;
+  max-width: 240px;
+  background-color: #2f4050;
+  height: 80vh;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-subitem-text {
+  font-size: 0.8rem;
 }
 
 .sidebar-item {
@@ -94,83 +96,11 @@ code {
   font-weight: bold;
 }
 
+/* Begflow header */
+
 .header #header-main {
   height: 40px;
   line-height: 40px;
   vertical-align: middle;
   text-align: right;
 }
-
-
-/* #sidebar {
-  position: absolute;
-  width: 200px;
-  padding-top: 50px;
-
-}
-#sidebar .pro-sidebar {
-  height: 100vh;
-}
-#sidebar .close-menu {
-  color: #000;
-  position: relative;
-  right: 0;
-  z-index: 9999;
-  line-height: 20px;
-  border-radius: 50%;
-  font-weight: bold;
-  font-size: 22px;
-  top: 55px;
-  cursor: pointer;
-}
-#sidebar .pro-sidebar {
-  width: 50%;
-  min-width: 100%;
-}
-#sidebar .pro-sidebar.collapsed {
-  width: 80px;
-  min-width: 80px;
-}
-#sidebar .pro-sidebar-inner {
-  background-color: lightgray;
-  box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-}
-#sidebar .pro-sidebar-inner .pro-sidebar-layout {
-  overflow-y: hidden;
-}
-#sidebar .pro-sidebar-inner .pro-sidebar-layout .logo-text p {
-  font-size: 20px;
-  padding: 0 20px;
-  padding-bottom: 15px;
-  color: #000;
-  font-weight: bold;
-}
-#sidebar .pro-sidebar-inner .pro-sidebar-layout ul {
-  padding: 0 5px;
-}
-#sidebar .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item {
-  color: #000;
-  margin: 10px 0px;
-  font-weight: bold;
-}
-#sidebar .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper {
-  background-color: grey;
-  color: #000;
-  border-radius: 3px;
-}
-#sidebar .pro-sidebar-inner .pro-sidebar-layout ul .pro-inner-item .pro-icon-wrapper .pro-item-content {
-  color: #000;
-}
-#sidebar .pro-sidebar-inner .pro-sidebar-layout .active {
-  background-image: linear-gradient(0deg, grey 0%, white 100%);
-}
-#sidebar .logo {
-  padding: 20px;
-}
-
-@media only screen and (max-width:720px) {
-  html {
-    overflow: hidden;
-  }
-} */

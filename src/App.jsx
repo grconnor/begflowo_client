@@ -2,38 +2,39 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import InputFields from "./components/InputFields";
-import LoginForm from "./components/LoginForm";
-import Dashboard from "./components/Dashboard";
-import Preferences from "./components/Preferences";
-import { authenticate } from "./modules/auth";
+// Component Imports
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SideBar from "./components/SideBar";
-import SettingsIcon from "@material-ui/icons/Settings";
-import DriveEtaIcon from '@material-ui/icons/DriveEta';
-import StoreIcon from '@material-ui/icons/Store';
-import HistoryIcon from '@material-ui/icons/History';
-import LocalParkingIcon from '@material-ui/icons/LocalParking';
-// import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
-// import NotificationsIcon from "@material-ui/icons/Notifications";
-// import ReceiptIcon from "@material-ui/icons/Receipt";
-// import HomeIcon from "@material-ui/icons/Home";
-// import AssessmentIcon from '@material-ui/icons/Assessment';
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import LoginForm from "./components/LoginForm";
+import Dashboard from "./components/Dashboard";
+import InputFields from "./components/InputFields";
+import Preferences from "./components/Preferences";
+
+// Module Imports
+import { authenticate } from "./modules/auth";
+
+// Icon Imports
 import AppsIcon from '@material-ui/icons/Apps';
-import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
+import HomeIcon from '@material-ui/icons/Home';
+import StoreIcon from '@material-ui/icons/Store';
 import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import HistoryIcon from '@material-ui/icons/History';
+import SettingsIcon from "@material-ui/icons/Settings";
+import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 import BusinessIcon from '@material-ui/icons/Business';
-import HomeIcon from '@material-ui/icons/Home';
+import LocalParkingIcon from '@material-ui/icons/LocalParking';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 
 function onClick(e, item) {
   window.alert(JSON.stringify(item, null, 2));
 }
 
+// Menu List Items
 const items = [
   { name: "home", label: "Home", Icon: HomeIcon },
   "divider",
@@ -144,7 +145,6 @@ class App extends Component {
           </div>
           <Header />
           <InputFields onChangeHandler={this.onChangeHandler} />
-          {/* <SideBar /> */}
           <SideBar items={items}/>
           <Footer />
         </div>
