@@ -28,24 +28,29 @@ import CreateIcon from '@material-ui/icons/Create';
 import DeleteIcon from '@material-ui/icons/Delete';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import BusinessIcon from '@material-ui/icons/Business';
+import HomeIcon from '@material-ui/icons/Home';
 
 function onClick(e, item) {
   window.alert(JSON.stringify(item, null, 2));
 }
 
 const items = [
-  { name: "home", label: "Home" },
+  { name: "home", label: "Home", Icon: HomeIcon },
+  "divider",
   { name: "manage", label: "Manage", Icon: AppsIcon, items: [
     { name: "my cars", label: "My Cars", Icon: DriveEtaIcon, onClick },
     { name: "inventory", label: "Inventory", Icon: StoreIcon, onClick },
     { name: "past orders", label: "Past Orders", Icon: HistoryIcon, onClick },
     { name: "parking spots", label: "Parking Spots", Icon: LocalParkingIcon, onClick }
-  ]},
+  ] },
+  "divider",
   { name: "reports", label: "Reports", Icon: MenuBookIcon },
+  "divider",
   { name: "stages", label: "Stages", Icon: FormatListBulletedIcon, items: [
     { name: "workshop", label: "Workshop", onClick },
     { name: "panelshop", label: "Panelshop", onClick }
   ] },
+  "divider",
   {
     name: "admin",
     label: "Admin",
@@ -58,6 +63,7 @@ const items = [
       { name: "set default options", label: "Set Default Options", Icon: CreateIcon, onClick }
     ]
   },
+  "divider",
   { name: "settings", label: "Settings", Icon: SettingsIcon, items: [
     { name: "profile", label: "Profile", onClick },
     { name: "preferences", label: "Preferences", onClick }
