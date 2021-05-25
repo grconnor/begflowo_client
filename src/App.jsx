@@ -6,10 +6,65 @@ import InputFields from "./components/InputFields";
 import LoginForm from "./components/LoginForm";
 import Dashboard from "./components/Dashboard";
 import Preferences from "./components/Preferences";
-import SideBar  from "./components/SideBar";
+// import SideBar  from "./components/SideBar";
 import { authenticate } from "./modules/auth";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SideBar from "./components/SideBar";
+import SettingsIcon from "@material-ui/icons/Settings";
+import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
+import NotificationsIcon from "@material-ui/icons/Notifications";
+import ReceiptIcon from "@material-ui/icons/Receipt";
+import HomeIcon from "@material-ui/icons/Home";
+import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import StoreIcon from '@material-ui/icons/Store';
+import HistoryIcon from '@material-ui/icons/History';
+import LocalParkingIcon from '@material-ui/icons/LocalParking';
+import AssessmentIcon from '@material-ui/icons/Assessment';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import AppsIcon from '@material-ui/icons/Apps';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import CreateIcon from '@material-ui/icons/Create';
+import DeleteIcon from '@material-ui/icons/Delete';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import BusinessIcon from '@material-ui/icons/Business';
+import { BusinessTwoTone } from "@material-ui/icons";
+
+function onClick(e, item) {
+  window.alert(JSON.stringify(item, null, 2));
+}
+
+const items = [
+  { name: "home", label: "Home" },
+  { name: "manage", label: "Manage", Icon: AppsIcon, items: [
+    { name: "my cars", label: "My Cars", Icon: DriveEtaIcon, onClick },
+    { name: "inventory", label: "Inventory", Icon: StoreIcon, onClick },
+    { name: "past orders", label: "Past Orders", Icon: HistoryIcon, onClick },
+    { name: "parking spots", label: "Parking Spots", Icon: LocalParkingIcon, onClick }
+  ]},
+  { name: "reports", label: "Reports", Icon: MenuBookIcon },
+  { name: "stages", label: "Stages", Icon: FormatListBulletedIcon, items: [
+    { name: "workshop", label: "Workshop", onClick },
+    { name: "panelshop", label: "Panelshop", onClick }
+  ] },
+  {
+    name: "admin",
+    label: "Admin",
+    Icon: SupervisorAccountIcon,
+    items: [
+      { name: "create new login", label: "Create new login", Icon: VpnKeyIcon, onClick },
+      { name: "set company/dealership", label: "Set Company/Dealership", Icon: BusinessIcon, onClick },
+      { name: "edit flow", label: "Edit Flow", Icon: CreateIcon, onClick },
+      { name: "delete previous order", label: "Delete Previous Order", Icon: DeleteIcon, onClick },
+      { name: "set default options", label: "Set Default Options", Icon: CreateIcon, onClick }
+    ]
+  },
+  { name: "settings", label: "Settings", Icon: SettingsIcon, items: [
+    { name: "profile", label: "Profile", onClick },
+    { name: "preferences", label: "Preferences", onClick }
+  ]}
+]
 
 class App extends Component {
   state = {
@@ -73,20 +128,22 @@ class App extends Component {
 
     return (
       <>
-        <div className="wrapper">
-          {/* <h1 id="main-logo">BegFlow</h1> */}
-          {renderLogin}
-          <BrowserRouter>
-            <Switch>
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/preferences" component={Preferences} />
-            </Switch>
-          </BrowserRouter>
+        <div className="App">
+          <div className="wrapper">
+            {renderLogin}
+            <BrowserRouter>
+              <Switch>
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/preferences" component={Preferences} />
+              </Switch>
+            </BrowserRouter>
+          </div>
+          <Header />
+          <InputFields onChangeHandler={this.onChangeHandler} />
+          {/* <SideBar /> */}
+          <SideBar items={items}/>
+          <Footer />
         </div>
-        <Header />
-        <InputFields onChangeHandler={this.onChangeHandler} />
-        <SideBar />
-        <Footer />
       </>
     );
   }

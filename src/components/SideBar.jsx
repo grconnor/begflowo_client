@@ -1,65 +1,106 @@
 import React, { useState } from "react";
-import { FaGem, FaHeart, FaList, FaRegHeart } from "react-icons/fa";
-import { RiPencilLine } from "react-icons/ri";
-import { BiCog } from "react-icons/bi";
-import {
-  FiHome,
-  FiLogOut,
-  FiArrowLeftCircle,
-  FiArrowRightCircle,
-} from "react-icons/fi";
-import {
-  ProSidebar,
-  Menu,
-  MenuItem,
-  SubMenu,
-  SidebarHeader,
-  SidebarFooter,
-  SidebarContent,
-} from "react-pro-sidebar";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+// import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import Collapse from "@material-ui/core/Collapse";
 
-const SideBar = () => {
-  const [menuCollapse, setMenuCollapse] = useState(false);
-  const menuIconClick = () => {
-    menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
-  };
+function SidebarItem({ depthStep = 10, depth = 0, expanded, item, ...rest }) {
+  const [collapsed, setCollapsed] = useState(true);
+  const { label, items, Icon, onClick: onClickProp } = item;
+
+  function toggleCollapse() {
+    setCollapsed(prevValue => !prevValue);
+  }
+
+  function onClick(e) {
+    if (Array.isArray(items)) {
+      toggleCollapse();
+    }
+    if (onClickProp) {
+      onClickProp(e, item);
+    }
+  }
+
+  let expandIcon;
+
+  if (Array.isArray(items) && items.length) {
+    expandIcon = !collapsed ? (
+      <ExpandLessIcon
+        className={
+          "sidebar-item-expand-arrow" +
+          "sidebar-item-expand-arrow-expanded"
+        }
+      />
+    ) : (
+      <ExpandMoreIcon className="sidebar-item-expand-arrow" />
+    );
+  }
 
   return (
     <>
-      <div id="sidebar">
-        <ProSidebar collapsed={menuCollapse}>
-          <SidebarHeader>
-            <div className="close-menu" onClick={menuIconClick}>
-              {menuCollapse ? <FiArrowRightCircle /> : <FiArrowLeftCircle />}
-            </div>
-            <div className="logo-text">
-              <p>{menuCollapse ? "Small" : "Expanded sidebar menu"}</p>
-            </div>
-          </SidebarHeader>
-          <SidebarContent>
-            <Menu iconShape="square">
-              <MenuItem active={true} icon={<FiHome />}>Home</MenuItem>
-              <MenuItem icon={<FaList />}>Order History</MenuItem>
-              <MenuItem icon={<FaRegHeart />}>Favorite Cars</MenuItem>
-              <SubMenu icon={<RiPencilLine />} title="Admin">
-                <MenuItem icon={<RiPencilLine />}>Create New Login</MenuItem>
-                <MenuItem icon={<RiPencilLine />}>Edit Flow</MenuItem>
-                <MenuItem icon={<RiPencilLine />}>
-                  Delete a previous order
-                </MenuItem>
-              </SubMenu>
-              <MenuItem icon={<BiCog />}>Settings</MenuItem>
-            </Menu>
-          </SidebarContent>
-          <SidebarFooter>
-            <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
-            </Menu>
-          </SidebarFooter>
-        </ProSidebar>
-      </div>
+      <ListItem
+        className="sidebar-item"
+        onClick={onClick}
+        button
+        dense
+        {...rest}
+      >
+        <div
+          style={{ paddingLeft: depth * depthStep }}
+          className="sidebar-item-content"
+        >
+          {Icon && <Icon className="sidebar-item-icon" fontSize="small" />}
+          <div className="sidebar-item-text">{label}</div>
+        </div>
+        {expandIcon}
+      </ListItem>
+      <Collapse in={!collapsed} timeout="auto" unmountOnExit>
+        {Array.isArray(items) ? (
+          <List disablePadding dense>
+            {items.map((subItem, index) => (
+              <React.Fragment key={`${subItem.name}${index}`}>
+                {subItem === "divider" ? (
+                  <Divider style={{ margin: "6px 0" }} />
+                ) : (
+                  <SidebarItem
+                    depth={depth + 1}
+                    depthStep={depthStep}
+                    item={subItem}
+                  />
+                )}
+              </React.Fragment>
+            ))}
+          </List>
+        ) : null}
+      </Collapse>
     </>
   );
-};
+}
+
+function SideBar({ items, depthStep, depth, expanded }) {
+  return (
+    <div className="sidebar">
+      <List disablePadding dense>
+        {items.map((sidebarItem, index) => (
+          <React.Fragment key={`${sidebarItem.name}${index}`}>
+            {sidebarItem === "divider" ? (
+              <Divider style={{ margin: "6px 0" }} />
+            ) : (
+              <SidebarItem
+                depthStep={depthStep}
+                depth={depth}
+                expanded={expanded}
+                item={sidebarItem}
+              />
+            )}
+          </React.Fragment>
+        ))}
+      </List>
+    </div>
+  );
+}
 
 export default SideBar;

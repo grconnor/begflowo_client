@@ -1,36 +1,50 @@
+.App {
+  width: 100vw;
+  height: 200vh;
+  background-color: pink;
+}
+
+.sidebarnew {
+  max-width: 240px;
+  background-color: #2f4050;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebarnew-subitem-text {
+  font-size: 0.8rem;
+}
+
 .input-fields {
   padding-left: 250px;
 }
 
-.wrapper #main-logo {
-  padding-top: 30px;
-  padding-left: 200px;
-}
-
 .header {
-background-color: grey;
-text-align: center;
-width: 100%;
-height: 54px;
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
+  background-color: grey;
+  text-align: center;
+  width: 100%;
+  height: 54px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 body {
   padding-top: 50px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.header #header-main {
-  height: 40px;
-  line-height: 40px;
-  vertical-align: middle;
-  text-align: right;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .footer {
-  background-color: black;
+  background-color: grey;
   text-align: center;
   height: 54px;
   width: 100%;
@@ -40,7 +54,55 @@ body {
   right: 0;
 }
 
-#sidebar {
+
+.sidebar {
+  max-width: 250px;
+  height: 100vh;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-item-content {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar-item-icon {
+  margin-right: 6px;
+}
+
+.sidebar-item-text {
+  width: 100%;
+}
+
+.sidebar-item-expand-arrow {
+  font-size: 1.2rem !important;
+  cursor: pointer;
+}
+
+.sidebar-item-expand-arrow-expanded {
+  color: #09bb12;
+  font-weight: bold;
+}
+
+.header #header-main {
+  height: 40px;
+  line-height: 40px;
+  vertical-align: middle;
+  text-align: right;
+}
+
+
+/* #sidebar {
   position: absolute;
   width: 200px;
   padding-top: 50px;
@@ -111,4 +173,4 @@ body {
   html {
     overflow: hidden;
   }
-}
+} */
