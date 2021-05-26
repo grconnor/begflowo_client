@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { Link, BrowserRouter } from "react-router-dom";
-import {
-  Button,
-  Form,
-  Container,
-  Message,
-  MenuItem,
-} from "semantic-ui-react";
+import { Button, Form, Container, Message, MenuItem } from "semantic-ui-react";
 
 const LoginForm = ({ submitFormHandler }) => {
   const [message, setMessage] = useState();
@@ -22,6 +16,7 @@ const LoginForm = ({ submitFormHandler }) => {
             type="email"
             name="email"
             id="login-email"
+            required
           />
 
           <Form.Input
@@ -32,6 +27,7 @@ const LoginForm = ({ submitFormHandler }) => {
             type="password"
             name="password"
             id="login-password"
+            required
           />
           <Button id="login-submit" content="Submit" primary />
         </Form>
@@ -45,9 +41,6 @@ const LoginForm = ({ submitFormHandler }) => {
             </Link>
           </BrowserRouter>
         </div>
-        {/* <MenuItem as={Link} to="/register" id="register">
-          Don't have an account yet? Sign up now!
-        </MenuItem> */}
 
         {message && (
           <Message id="onlogin-message" color="red">
@@ -56,15 +49,6 @@ const LoginForm = ({ submitFormHandler }) => {
         )}
       </Container>
     </>
-    // <form onSubmit={submitFormHandler} id="login-form">
-    //   <label>Email</label>
-    //   <input name="email" type="email" id="email"></input>
-
-    //   <label>Password</label>
-    //   <input name="password" type="password" id="password"></input>
-
-    //   <button id="submit">Sumbit</button>
-    // </form>
   );
 };
 

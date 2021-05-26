@@ -1,17 +1,16 @@
 /* App */
-
 .App {
   width: 100vw;
-  height: 200vh;
+  height: 100vh;
   background-color: pink;
 }
 
 /* Input Fields */
-
 .input-fields {
-  padding-left: 250px;
+  padding-left: 260px;
 }
 
+/* Login */
 #login-button {
   padding-top: 15px;
   background-color: black;
@@ -19,9 +18,31 @@
   border-radius: 15%;
 }
 
+#login-form {
+  background-color: rgb(247, 158, 173);
+  max-width: 160px;
+}
+
+#login-submit {
+  background-color: black;
+  color: white;
+}
+
+#register {
+
+}
+
+#onlogin-message {
+  font-family: sans-serif;
+}
+
+/* Order */
+.order #create-order {
+  background-color: black;
+  color: white;
+}
 
 /* Header, Footer, Body, Code */
-
 .header {
   background-color: grey;
   text-align: center;
@@ -59,15 +80,15 @@ code {
 }
 
 /* Sidebar */
-
 .sidebar {
   padding-top: 10px;
   max-width: 240px;
+  margin-top: 0;
   background-color: #2f6394;
   /* #2f4050 */
   height: 80vh;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  font-family: sans-serif; color: black !important
+  font-family: sans-serif; color: black !important;
 }
 
 .sidebar-item {
@@ -105,7 +126,6 @@ code {
 }
 
 /* Begflow header */
-
 .header #header-main {
   height: 40px;
   line-height: 40px;

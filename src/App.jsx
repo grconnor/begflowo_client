@@ -8,27 +8,28 @@ import Footer from "./components/Footer";
 import SideBar from "./components/SideBar";
 import LoginForm from "./components/LoginForm";
 import Dashboard from "./components/Dashboard";
-import InputFields from "./components/InputFields";
 import Preferences from "./components/Preferences";
+import DisplayWizard from "./components/DisplayWizard";
+// import InputFields from "./components/InputFields";
 
 // Module Imports
 import { authenticate } from "./modules/auth";
 
 // Icon Imports
-import AppsIcon from '@material-ui/icons/Apps';
-import HomeIcon from '@material-ui/icons/Home';
-import StoreIcon from '@material-ui/icons/Store';
-import CreateIcon from '@material-ui/icons/Create';
-import DeleteIcon from '@material-ui/icons/Delete';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import HistoryIcon from '@material-ui/icons/History';
+import AppsIcon from "@material-ui/icons/Apps";
+import HomeIcon from "@material-ui/icons/Home";
+import StoreIcon from "@material-ui/icons/Store";
+import CreateIcon from "@material-ui/icons/Create";
+import DeleteIcon from "@material-ui/icons/Delete";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
+import HistoryIcon from "@material-ui/icons/History";
 import SettingsIcon from "@material-ui/icons/Settings";
-import DriveEtaIcon from '@material-ui/icons/DriveEta';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import BusinessIcon from '@material-ui/icons/Business';
-import LocalParkingIcon from '@material-ui/icons/LocalParking';
-import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
+import DriveEtaIcon from "@material-ui/icons/DriveEta";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
+import BusinessIcon from "@material-ui/icons/Business";
+import LocalParkingIcon from "@material-ui/icons/LocalParking";
+import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 
 function onClick(e, item) {
   window.alert(JSON.stringify(item, null, 2));
@@ -38,38 +39,80 @@ function onClick(e, item) {
 const items = [
   { name: "home", label: "Home", Icon: HomeIcon },
   "divider",
-  { name: "manage", label: "Manage", Icon: AppsIcon, items: [
-    { name: "my cars", label: "My Cars", Icon: DriveEtaIcon, onClick },
-    { name: "inventory", label: "Inventory", Icon: StoreIcon, onClick },
-    { name: "past orders", label: "Past Orders", Icon: HistoryIcon, onClick },
-    { name: "parking spots", label: "Parking Spots", Icon: LocalParkingIcon, onClick }
-  ] },
+  {
+    name: "manage",
+    label: "Manage",
+    Icon: AppsIcon,
+    items: [
+      { name: "my cars", label: "My Cars", Icon: DriveEtaIcon, onClick },
+      { name: "inventory", label: "Inventory", Icon: StoreIcon, onClick },
+      { name: "past orders", label: "Past Orders", Icon: HistoryIcon, onClick },
+      {
+        name: "parking spots",
+        label: "Parking Spots",
+        Icon: LocalParkingIcon,
+        onClick,
+      },
+    ],
+  },
   "divider",
   { name: "reports", label: "Reports", Icon: MenuBookIcon },
   "divider",
-  { name: "stages", label: "Stages", Icon: FormatListBulletedIcon, items: [
-    { name: "workshop", label: "Workshop", onClick },
-    { name: "panelshop", label: "Panelshop", onClick }
-  ] },
+  {
+    name: "stages",
+    label: "Stages",
+    Icon: FormatListBulletedIcon,
+    items: [
+      { name: "workshop", label: "Workshop", onClick },
+      { name: "panelshop", label: "Panelshop", onClick },
+    ],
+  },
   "divider",
   {
     name: "admin",
     label: "Admin",
     Icon: SupervisorAccountIcon,
     items: [
-      { name: "create new login", label: "Create new login", Icon: VpnKeyIcon, onClick },
-      { name: "set company/dealership", label: "Set Company/Dealership", Icon: BusinessIcon, onClick },
+      {
+        name: "create new login",
+        label: "Create new login",
+        Icon: VpnKeyIcon,
+        onClick,
+      },
+      {
+        name: "set company/dealership",
+        label: "Set Company/Dealership",
+        Icon: BusinessIcon,
+        onClick,
+      },
       { name: "edit flow", label: "Edit Flow", Icon: CreateIcon, onClick },
-      { name: "delete previous order", label: "Delete Previous Order", Icon: DeleteIcon, onClick },
-      { name: "set default options", label: "Set Default Options", Icon: CreateIcon, onClick }
-    ]
+      {
+        name: "delete previous order",
+        label: "Delete Previous Order",
+        Icon: DeleteIcon,
+        onClick,
+      },
+      {
+        name: "set default options",
+        label: "Set Default Options",
+        Icon: CreateIcon,
+        onClick,
+      },
+    ],
   },
   "divider",
-  { name: "settings", label: "Settings", Icon: SettingsIcon, items: [
-    { name: "profile", label: "Profile", onClick },
-    { name: "preferences", label: "Preferences", onClick }
-  ]}
-]
+  {
+    name: "settings",
+    label: "Settings",
+    Icon: SettingsIcon,
+    items: [
+      { name: "profile", label: "Profile", onClick },
+      { name: "preferences", label: "Preferences", onClick },
+    ],
+  },
+];
+
+
 
 class App extends Component {
   state = {
@@ -84,27 +127,27 @@ class App extends Component {
     authenticated: false,
     message: "",
   };
-
+  
   onChangeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
+  
   onLogin = async (e) => {
     e.preventDefault();
     const response = await authenticate(
       e.target.email.value,
       e.target.password.value
-    );
-    if (response.authenticated) {
-      this.setState({ authenticated: true });
-    } else {
-      this.setState({ message: response.message, renderLoginForm: false });
-    }
-  };
-
-  render() {
-    const { renderLoginForm, authenticated, message } = this.state;
-    let renderLogin;
+      );
+      if (response.authenticated) {
+        this.setState({ authenticated: true });
+      } else {
+        this.setState({ message: response.message, renderLoginForm: false });
+      }
+    };
+    
+    render() {
+      const { renderLoginForm, authenticated, message } = this.state;
+      let renderLogin;
     switch (true) {
       case renderLoginForm && !authenticated:
         renderLogin = <LoginForm submitFormHandler={this.onLogin} />;
@@ -125,7 +168,8 @@ class App extends Component {
       case authenticated:
         renderLogin = (
           <p id="welcome-message">
-            You are logged in as {JSON.parse(sessionStorage.getItem("credentials")).uid}.
+            You are logged in as{" "}
+            {JSON.parse(sessionStorage.getItem("credentials")).uid}.
           </p>
         );
         break;
@@ -144,8 +188,9 @@ class App extends Component {
             </BrowserRouter>
           </div>
           <Header />
-          <InputFields onChangeHandler={this.onChangeHandler} />
-          <SideBar items={items}/>
+          {/* <InputFields onChangeHandler={this.onChangeHandler} /> */}
+          <DisplayWizard onChangeHandler={this.onChangeHandler} />
+          <SideBar items={items} />
           <Footer />
         </div>
       </>
