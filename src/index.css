@@ -10,6 +10,10 @@
   padding-left: 260px;
 }
 
+#input-bottom {
+  margin-left: 58px;
+}
+
 /* Login */
 #login-button {
   padding-top: 15px;
