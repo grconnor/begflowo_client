@@ -12,6 +12,14 @@
   padding-left: 250px;
 }
 
+#login-button {
+  padding-top: 15px;
+  background-color: black;
+  color: white;
+  border-radius: 15%;
+}
+
+
 /* Header, Footer, Body, Code */
 
 .header {
@@ -53,14 +61,13 @@ code {
 /* Sidebar */
 
 .sidebar {
+  padding-top: 10px;
   max-width: 240px;
-  background-color: #2f4050;
+  background-color: #2f6394;
+  /* #2f4050 */
   height: 80vh;
   border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.sidebar-subitem-text {
-  font-size: 0.8rem;
+  font-family: sans-serif; color: black !important
 }
 
 .sidebar-item {
@@ -84,6 +91,7 @@ code {
 
 .sidebar-item-text {
   width: 100%;
+  font-size: 1rem;
 }
 
 .sidebar-item-expand-arrow {

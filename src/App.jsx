@@ -113,7 +113,7 @@ class App extends Component {
         renderLogin = (
           <>
             <button
-              id="login"
+              id="login-button"
               onClick={() => this.setState({ renderLoginForm: true })}
             >
               Login
