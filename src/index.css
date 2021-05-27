@@ -5,13 +5,21 @@
   background-color: pink;
 }
 
+#continue-button {
+  margin: 15;
+}
+
+#basic-info {
+  padding-left: 250px;
+}
+
 /* Input Fields */
 .input-fields {
   padding-left: 260px;
 }
 
 #input-bottom {
-  margin-left: 58px;
+  margin-left: 45px;
 }
 
 /* Login */
@@ -131,8 +139,8 @@ code {
 
 /* Begflow header */
 .header #header-main {
-  height: 40px;
+  /* height: 40px;
   line-height: 40px;
   vertical-align: middle;
-  text-align: right;
+  text-align: right; */
 }

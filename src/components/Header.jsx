@@ -1,4 +1,5 @@
 import React from 'react'
+import logo from "../images/begflow_logo.svg"
 
 const Header = () => {
   return (

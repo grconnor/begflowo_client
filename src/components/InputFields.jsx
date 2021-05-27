@@ -17,6 +17,14 @@ const InputFields = ({ onChangeHandler }) => {
           <option value="cvt">CVT</option>
         </select>
 
+        <label>Fuelage: </label>
+        <select onChange={onChangeHandler} name="fuelage" id="fuelage">
+          <option value="gasoline/petrol">Gasoline/Petrol</option>
+          <option value="diesel">Diesel</option>
+          <option value="bio-diesel">Bio-diesel</option>
+          <option value="ethanol">Ethanol</option>
+        </select>
+
         <label>Make: </label>
         <select onChange={onChangeHandler} name="make" id="make">
           <option value="nissan">Nissan</option>
@@ -42,12 +50,12 @@ const InputFields = ({ onChangeHandler }) => {
           <option value="subaru">Subaru</option>
         </select>
 
-        <label>Model: </label>
-        <input onChange={onChangeHandler} name="model" id="model"></input>
-
         <br></br>
 
         <div id="input-bottom">
+          <label>Model: </label>
+          <input onChange={onChangeHandler} name="model" id="model"></input>
+
           <label>Year: </label>
           <input onChange={onChangeHandler} name="year" id="year"></input>
 

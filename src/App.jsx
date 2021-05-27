@@ -177,13 +177,14 @@ class App extends Component {
 
     return (
       <>
-        <div className="App">
+        <div className="App" id="">
           <div className="wrapper">
             {renderLogin}
             <BrowserRouter>
               <Switch>
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/preferences" component={Preferences} />
+                <Route path="/login" component={LoginForm} />
               </Switch>
             </BrowserRouter>
           </div>
