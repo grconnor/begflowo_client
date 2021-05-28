@@ -4,6 +4,7 @@ import { Button, Form, Container, Message, MenuItem } from "semantic-ui-react";
 
 const LoginForm = ({ submitFormHandler }) => {
   const [message, setMessage] = useState();
+  debugger;
   return (
     <>
       <Container>
@@ -29,7 +30,7 @@ const LoginForm = ({ submitFormHandler }) => {
             id="login-password"
             required
           />
-          <Button id="login-submit" content="Submit" primary />
+          <Button id="login-submit" type="submit" content="Submit" primary />
         </Form>
       </Container>
 

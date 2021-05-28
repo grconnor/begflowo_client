@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import Login from "./components/Login";
+import LoginForm from "./components/LoginForm";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import "./index.css"
 
@@ -13,12 +16,23 @@ if (process.env.NODE_ENV === "production") {
 }
 axios.defaults.baseURL = apiUrl;
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+ReactDOM.render((
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route 
+        exact path="/login"
+        render={(props) =>
+          <div>
+            <Login />
+          </div>
+        }
+      
+      />
+    </Switch>
+  </BrowserRouter>
+), document.getElementById("root"));
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

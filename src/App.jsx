@@ -123,73 +123,19 @@ class App extends Component {
     year: "",
     color: "",
     mileage: "",
-    renderLoginForm: false,
-    authenticated: false,
-    message: "",
+    // renderLoginForm: false,
+    // authenticated: false,
+    // message: "",
   };
-  
-  onChangeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  
-  onLogin = async (e) => {
-    e.preventDefault();
-    const response = await authenticate(
-      e.target.email.value,
-      e.target.password.value
-      );
-      if (response.authenticated) {
-        this.setState({ authenticated: true });
-      } else {
-        this.setState({ message: response.message, renderLoginForm: false });
-      }
-    };
     
-    render() {
-      const { renderLoginForm, authenticated, message } = this.state;
-      let renderLogin;
-    switch (true) {
-      case renderLoginForm && !authenticated:
-        renderLogin = <LoginForm submitFormHandler={this.onLogin} />;
-        break;
-      case !renderLoginForm && !authenticated:
-        renderLogin = (
-          <>
-            <button
-              id="login-button"
-              onClick={() => this.setState({ renderLoginForm: true })}
-            >
-              Login
-            </button>
-            <p id="message">{message}</p>
-          </>
-        );
-        break;
-      case authenticated:
-        renderLogin = (
-          <p id="welcome-message">
-            You are logged in as{" "}
-            {JSON.parse(sessionStorage.getItem("credentials")).uid}.
-          </p>
-        );
-        break;
-    }
-
+  render() {
     return (
       <>
         <div className="App" id="">
           <div className="wrapper">
-            {renderLogin}
-            <BrowserRouter>
-              <Switch>
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/preferences" component={Preferences} />
-                <Route path="/login" component={LoginForm} />
-              </Switch>
-            </BrowserRouter>
+            {/* {renderLogin} */}
           </div>
           <Header />
-          {/* <InputFields onChangeHandler={this.onChangeHandler} /> */}
           <DisplayWizard onChangeHandler={this.onChangeHandler} />
           <SideBar items={items} />
           <Footer />
@@ -200,3 +146,11 @@ class App extends Component {
 }
 
 export default App;
+
+//<BrowserRouter>
+//<Switch>
+//  <Route exact path="/dashboard" component={Dashboard} />
+//  <Route exact path="/preferences" component={Preferences} />
+//  {/* <Route exact path="/login" component={LoginForm} /> */}
+//</Switch>
+//</BrowserRouter>
