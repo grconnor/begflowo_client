@@ -16,8 +16,8 @@
 
 ## Updates/Improvements:
 
-- Commented out code in LoginForm.jsx
-- 
+- Fix fuelage naming in input fields.
+- Fix header logo.
 - 
 
 ## Built with

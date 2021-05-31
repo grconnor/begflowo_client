@@ -4,12 +4,28 @@ const InputFields = ({ onChangeHandler }) => {
   return (
     <>
       <div className="input-fields">
-        <label>Reg Number</label>
+        <label>Reg Number: </label>
         <input onChange={onChangeHandler} name="regnum" id="reg-num"></input>
 
-        <label>Order Number</label>
+        <label>Order Number: </label>
         <input onChange={onChangeHandler} name="ordernum" id="order-num"></input>
 
+        <label>Transmission: </label>
+        <select onChange={onChangeHandler} name="transmission" id="transmission">
+          <option value="manual">Manual</option>
+          <option value="automatic">Automatic</option>
+          <option value="cvt">CVT</option>
+        </select>
+
+        <label>Fuelage: </label>
+        <select onChange={onChangeHandler} name="fuelage" id="fuelage">
+          <option value="gasoline/petrol">Gasoline/Petrol</option>
+          <option value="diesel">Diesel</option>
+          <option value="bio-diesel">Bio-diesel</option>
+          <option value="ethanol">Ethanol</option>
+        </select>
+
+        <label>Make: </label>
         <select onChange={onChangeHandler} name="make" id="make">
           <option value="nissan">Nissan</option>
           <option value="mercedes">Mercedes</option>
@@ -34,17 +50,21 @@ const InputFields = ({ onChangeHandler }) => {
           <option value="subaru">Subaru</option>
         </select>
 
-        <label>Model</label>
-        <input onChange={onChangeHandler} name="model" id="model"></input>
+        <br></br>
 
-        <label>Year</label>
-        <input onChange={onChangeHandler} name="year" id="year"></input>
+        <div id="input-bottom">
+          <label>Model: </label>
+          <input onChange={onChangeHandler} name="model" id="model"></input>
 
-        <label>Color</label>
-        <input onChange={onChangeHandler} name="color" id="color"></input>
+          <label>Year: </label>
+          <input onChange={onChangeHandler} name="year" id="year"></input>
 
-        <label>Mileage</label>
-        <input onChange={onChangeHandler} name="mileage" id="mileage"></input>
+          <label>Color: </label>
+          <input onChange={onChangeHandler} name="color" id="color"></input>
+
+          <label>Mileage: </label>
+          <input onChange={onChangeHandler} name="mileage" id="mileage"></input>
+        </div>
       </div>
     </>
   );
